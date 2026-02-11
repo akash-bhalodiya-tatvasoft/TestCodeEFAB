@@ -25,6 +25,28 @@ export const routes: Routes = [
         component: MyProfile,
         title: GetPageTitle(TITLES.PROFILE),
       },
+      {
+        path: 'country',
+        loadComponent: () => import('../app/features/country/pages/country-list/country-list').then(m => m.CountryList)
+      },
+      // Route for creating a new Country
+      {
+        path: 'country/add',
+        loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
+        data: {mode: 'create' }
+      },
+      // Route for update Country
+      {
+        path: 'country/edit/:id',
+        loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
+        data: {mode: 'edit' }
+      },
+      // Route for view Country
+      {
+        path: 'country/view/:id',
+        loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
+        data: {mode: 'view' }
+      }
     ],
   },
   {

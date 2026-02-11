@@ -7,6 +7,8 @@ namespace TestCodeEF.Domain.Mapper
         public MappingProfile()
         {
             // Create your object-object mappings here
+            CreateMap<Country, CountryViewModel>().ReverseMap();
+            CreateMap<Country, CountryAddViewModel>().ReverseMap();
         }
     }
 }
