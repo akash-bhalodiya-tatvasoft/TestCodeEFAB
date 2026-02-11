@@ -1,0 +1,11 @@
+<div class="dialog-header">
+  <h2 class="dialog-title">{{ options.title }}</h2>
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <ng-container *ngComponentOutlet="options.component; injector: customInjector">
+  </ng-container>
+</mat-dialog-content>

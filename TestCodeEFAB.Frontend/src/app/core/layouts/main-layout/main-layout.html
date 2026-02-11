@@ -1,0 +1,15 @@
+<app-header (toggle)="toggleSidebar()"></app-header>
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav [mode]="sidenavMode" [opened]="isExpanded()" class="sidenav">
+    <app-navbar [expanded]="isExpanded()"></app-navbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <div class="main-content-wrap">
+      <div class="custom-card-wrap">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

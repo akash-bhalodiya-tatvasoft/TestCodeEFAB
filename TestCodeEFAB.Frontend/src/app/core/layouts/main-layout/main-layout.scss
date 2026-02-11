@@ -1,0 +1,35 @@
+@use '../../../../assets/style/variables.scss' as *;
+:host {
+  display: block;
+  height: 100dvh;
+  width: 100%;
+}
+
+.header {
+  height: 50px;
+}
+
+mat-sidenav-container {
+  height: calc(100dvh - 50px);
+  border-radius: 0 !important;
+  mat-sidenav {
+    width: 230px;
+    background: $primary-color;
+    color: $white;
+    z-index: 1000;
+    border-radius: 0 !important;
+    &.sidenav {
+      height: calc(100dvh - 50px);
+    }
+  }
+  mat-sidenav-content {
+    border-radius: 0 !important;
+  }
+}
+
+.main-content-wrap {
+  min-height: calc(100dvh - 50px);
+  background-color: $light-gray1;
+  position: relative;
+  padding: 25px;
+}
