@@ -6,7 +6,7 @@ namespace TestCodeEF.Domain.DTOs
 
         public string Message { get; set; }
 
-        public object DataObj { get; set; }
+        public object Data { get; set; }
 
     }
 }

@@ -11,8 +11,8 @@ namespace TestCodeEF.Server.Helpers
             {
                 StatusCode = (int)statusCode,
                 Message = message,
-                DataObj = data
+                Data = data
             };
-        }        
+        }
     }
 }
