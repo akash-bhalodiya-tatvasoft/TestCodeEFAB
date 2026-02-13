@@ -81,6 +81,10 @@ export class CountryList implements OnInit {
   this.router.navigate(['edit', countryId], { relativeTo: this.route });
 }
 
+  onView(countryId: number): void {
+  this.router.navigate(['view', countryId], { relativeTo: this.route });
+}
+
 onDelete(countryId: number): void {
     this.confirmService.confirm({
       title: 'Delete Country',

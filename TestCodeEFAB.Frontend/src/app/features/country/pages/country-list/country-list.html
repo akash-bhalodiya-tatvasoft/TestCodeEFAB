@@ -35,6 +35,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let item">
+        <button mat-icon-button color="primary" (click)="onView(item.countryId)"><mat-icon>remove_red_eye</mat-icon></button>
         <button mat-icon-button color="primary" (click)="onEdit(item.countryId)"><mat-icon>edit</mat-icon></button>
         <button mat-icon-button color="warn" (click)="onDelete(item.countryId)"><mat-icon>delete</mat-icon></button>
       </td>
