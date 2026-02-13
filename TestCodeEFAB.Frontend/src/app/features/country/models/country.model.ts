@@ -17,7 +17,7 @@ export interface CountrySearchRequest extends PageRequest {
 
 
 export interface Country {
-  countryId: number;
+  countryId?: number;
   name?: string;
 }
 

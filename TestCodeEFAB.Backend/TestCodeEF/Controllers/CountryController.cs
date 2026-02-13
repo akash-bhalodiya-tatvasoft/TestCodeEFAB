@@ -34,7 +34,7 @@ namespace TestCodeEFAB.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ApiResponseDto> CreateCountry([FromBody] CountryAddViewModel countryAddViewModel)
+        public async Task<ApiResponseDto> CreateCountry(CountryAddViewModel countryAddViewModel)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace TestCodeEFAB.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ApiResponseDto> UpdateCountry([FromBody] CountryAddViewModel countryAddViewModel)
+        public async Task<ApiResponseDto> UpdateCountry(CountryAddViewModel countryAddViewModel)
         {
             try
             {

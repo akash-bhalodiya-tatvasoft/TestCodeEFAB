@@ -69,20 +69,23 @@ namespace TestCodeEFAB.Application.Interface
         {
             try
             {
-                Country? entity = await _context.Countries.FindAsync(countryAddViewModel.CountryId);
-
-                if (entity == null)
+                var country = await _context.Countries.FindAsync(countryAddViewModel.CountryId);
+                if (country == null)
                 {
-                    entity = _mapper.Map<Country>(countryAddViewModel);
-                    _context.Countries.Add(entity);
+                    country = _mapper.Map<Country>(countryAddViewModel);
+                    _context.Countries.Add(country);
+                    await _context.SaveChangesAsync();
+
+                    countryAddViewModel.CountryId = country.CountryId;
                 }
                 else
                 {
-                    _mapper.Map(countryAddViewModel, entity);
+                    _mapper.Map(countryAddViewModel, country);
+                    _context.Countries.Update(country);
+                    await _context.SaveChangesAsync();
                 }
 
-                await _context.SaveChangesAsync();
-                return entity.CountryId;
+                return countryAddViewModel.CountryId;
             }
             catch (Exception ex)
             {
@@ -94,7 +97,7 @@ namespace TestCodeEFAB.Application.Interface
         {
             try
             {
-                Country? entity = await _context.Countries.FindAsync(countryId);
+                var entity = await _context.Countries.FirstOrDefaultAsync(x => x.CountryId == countryId);
 
                 if (entity == null)
                     return null;
@@ -107,24 +110,25 @@ namespace TestCodeEFAB.Application.Interface
             }
         }
 
-        public async Task<bool> DeleteCountryAsync(int countryId)
+        public async Task<int?> DeleteCountryAsync(int countryId)
         {
             try
             {
-                Country? entity = await _context.Countries.FindAsync(countryId);
+                var entity = await _context.Countries.FindAsync(countryId);
 
                 if (entity == null)
-                    return false;
+                    return null;
 
                 _context.Countries.Remove(entity);
                 await _context.SaveChangesAsync();
-                return true;
+                return entity.CountryId;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
 
         public async Task<List<CountryListModel>> GetCountryOptionsListAsync()
         {

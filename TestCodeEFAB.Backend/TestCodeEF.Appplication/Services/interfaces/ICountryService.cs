@@ -8,7 +8,7 @@ namespace TestCodeEFAB.Application.Interface
         Task<PagedResult<CountryViewModel>> GetCountryListAsync(CountrySearchRequest countrySearchRequest);
         Task<int> AddEditCountryAsync(CountryAddViewModel countryAddViewModel);
         Task<CountryAddViewModel?> GetCountryDetailsAsync(int countryId);
-        Task<bool> DeleteCountryAsync(int countryId);
+        Task<int?> DeleteCountryAsync(int countryId);
         Task<List<CountryListModel>> GetCountryOptionsListAsync();
 
     }

@@ -36,7 +36,7 @@ export class CountryService {
     return this.http.post<ApiResponse<boolean>>(`${this.url}`, model);
   }
 
-  updateCountry(model: Country): Observable<ApiResponse<boolean>> {
+  updateCountry( model: Country): Observable<ApiResponse<boolean>> {
     return this.http.put<ApiResponse<boolean>>(`${this.url}`, model);
   }
 
