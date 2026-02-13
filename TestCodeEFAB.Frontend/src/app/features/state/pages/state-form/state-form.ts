@@ -5,10 +5,9 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiResponse } from "../../../../core/models";
 import { SharedModule } from "../../../../core/modules/shared.module";
+import { CountryDropdown } from "../../../country/pages/country-dropdown/country-dropdown";
 import { State } from "../../models/state.model";
 import { StateService } from "../../services/state.service";
-import { CountryDropdown } from "../../../country/pages/country-dropdown/country-dropdown";
-
 
 type FormMode = 'create' | 'edit' | 'view';
 @Component({
@@ -35,9 +34,10 @@ export class StateForm implements OnInit {
       required: 'This field is required',
       maxlength: 'Maximum length should be 50',
       pattern: 'Invalid format',
+      minlength: 'Minimum length should be 3',
     },
     countryId: {
-      required: 'This field is required',
+      min: 'Minimum value should be 1',
     },
  
   };
@@ -46,8 +46,8 @@ export class StateForm implements OnInit {
   
 
   readonly form = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9-,.`\']*$')]],
-    countryId: [0, [Validators.required]],
+    name: ['', [Validators.required, Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9-,.`\']*$'), Validators.minLength(3)]],
+    countryId: [0, [Validators.min(1)]],
 
   });
 
