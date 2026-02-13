@@ -126,5 +126,21 @@ namespace TestCodeEFAB.Application.Interface
             }
         }
 
+        public async Task<List<CountryListModel>> GetCountryOptionsListAsync()
+        {
+            try
+            {
+                return await _context.Countries
+                        .Select(x => new CountryListModel
+                        {
+                            CountryId = x.CountryId,
+                            Name = x.Name
+                        }).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

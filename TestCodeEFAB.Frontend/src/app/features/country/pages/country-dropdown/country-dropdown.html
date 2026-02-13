@@ -1,0 +1,31 @@
+<mat-form-field appearance="outline" class="custom-form-field">
+    <mat-label>{{label()}}</mat-label>
+  
+    <mat-select [formControl]="control()" [placeholder]="placeholder()">
+      <mat-option [value]="null">-- Select --</mat-option>
+  
+      
+      <mat-option disabled class="search-option">
+        <input
+          matInput
+          type="text"
+          placeholder="Search..."
+          (click)="$event.stopPropagation()"
+          (keydown)="$event.stopPropagation()"
+          (input)="onSearch($event)"
+          class="dropdown-search-input"
+        />
+      </mat-option>
+  
+      @for (item of filteredOptions(); track $index) {
+        <mat-option [value]="item.countryId">
+          {{ item.name }}
+        </mat-option>
+      }
+    </mat-select>
+  
+    @if (control().invalid && control().touched) {
+      <mat-error>{{label()}} is required</mat-error>
+    }
+  </mat-form-field>
+  

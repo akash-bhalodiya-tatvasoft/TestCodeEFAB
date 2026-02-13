@@ -20,3 +20,13 @@ export interface Country {
   countryId: number;
   name?: string;
 }
+
+/** Interface for Country Dropdown selection */
+export interface CountryOption {
+  countryId: number;
+  name: string;
+}
+
+
+
+

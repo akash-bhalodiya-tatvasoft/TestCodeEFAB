@@ -88,5 +88,20 @@ namespace TestCodeEFAB.Api.Controllers
                 return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
             }
         }
+
+        [HttpGet("country-list")]
+        public async Task<ApiResponseDto> GetCountryOptionsListAsync()
+        {
+            try
+            {
+
+                var result = await _countryService.GetCountryOptionsListAsync();
+                return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
+            }
+            catch (Exception ex)
+            {
+                return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
+            }
+        }
     }
 }
