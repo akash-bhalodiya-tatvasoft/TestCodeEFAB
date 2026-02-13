@@ -46,6 +46,10 @@ export const routes: Routes = [
         path: 'country/view/:id',
         loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
         data: {mode: 'view' }
+      },
+      {
+        path: 'state',
+        loadComponent: () => import('../app/features/state/pages/state-list/state-list').then(m => m.StateList)
       }
     ],
   },

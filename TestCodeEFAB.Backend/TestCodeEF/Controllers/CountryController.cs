@@ -8,7 +8,7 @@ using static TestCodeEF.Application.Common.GlobalEnums;
 namespace TestCodeEFAB.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CountryController : ControllerBase
     {
 

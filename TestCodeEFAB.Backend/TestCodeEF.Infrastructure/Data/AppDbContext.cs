@@ -8,6 +8,7 @@ namespace TestCodeEF.Infrastructure.Data
 
         //DbSet goes here
         public DbSet<Country> Countries => Set<Country>();
+        public DbSet<State> States => Set<State>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
