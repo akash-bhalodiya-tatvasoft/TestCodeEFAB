@@ -116,7 +116,6 @@ export class CountryForm implements OnInit {
       : baseModel;
 
 
-  const id = this.countryId();
     const request$ = id 
       ? this.service.updateCountry(model) 
       : this.service.addCountry(model);
