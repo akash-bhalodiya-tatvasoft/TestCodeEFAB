@@ -27,37 +27,25 @@ export const routes: Routes = [
       },
       {
         path: 'country',
-        loadComponent: () =>
-          import('../app/features/country/pages/country-list/country-list').then(
-            (m) => m.CountryList
-          ),
+        loadComponent: () => import('../app/features/country/pages/country-list/country-list').then(m => m.CountryList)
       },
       // Route for creating a new Country
       {
         path: 'country/add',
-        loadComponent: () =>
-          import('../app/features/country/pages/country-form/country-form').then(
-            (m) => m.CountryForm
-          ),
-        data: { mode: 'create' },
+        loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
+        data: {mode: 'create' }
       },
       // Route for update Country
       {
         path: 'country/edit/:id',
-        loadComponent: () =>
-          import('../app/features/country/pages/country-form/country-form').then(
-            (m) => m.CountryForm
-          ),
-        data: { mode: 'edit' },
+        loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
+        data: {mode: 'edit' }
       },
       // Route for view Country
       {
         path: 'country/view/:id',
-        loadComponent: () =>
-          import('../app/features/country/pages/country-form/country-form').then(
-            (m) => m.CountryForm
-          ),
-        data: { mode: 'view' },
+        loadComponent: () => import('../app/features/country/pages/country-form/country-form').then(m => m.CountryForm),
+        data: {mode: 'view' }
       },
       {
         path: 'state',

@@ -30,7 +30,7 @@ namespace TestCodeEFAB.Application.Interface
 
                 if (!string.IsNullOrEmpty(countrySearchRequest.SearchText))
                 {
-                    query = query.Where(e => EF.Property<string>(e, "Name").Contains(countrySearchRequest.SearchText));
+                    query = query.Where(e => e.Name.Contains(countrySearchRequest.SearchText));
                 }
 
                 if (!string.IsNullOrEmpty(countrySearchRequest.SortField))

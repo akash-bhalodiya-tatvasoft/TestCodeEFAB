@@ -24,6 +24,7 @@ namespace TestCodeEFAB.Api.Controllers
         {
             try
             {
+
                 var result = await _countryService.GetCountryListAsync(countrySearchRequest);
                 return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
             }
@@ -38,6 +39,7 @@ namespace TestCodeEFAB.Api.Controllers
         {
             try
             {
+
                 var result = await _countryService.AddEditCountryAsync(countryAddViewModel);
                 return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
             }
@@ -52,6 +54,7 @@ namespace TestCodeEFAB.Api.Controllers
         {
             try
             {
+
                 var result = await _countryService.AddEditCountryAsync(countryAddViewModel);
                 return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
             }
@@ -66,6 +69,7 @@ namespace TestCodeEFAB.Api.Controllers
         {
             try
             {
+
                 var result = await _countryService.GetCountryDetailsAsync(countryId);
                 return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
             }
@@ -80,6 +84,7 @@ namespace TestCodeEFAB.Api.Controllers
         {
             try
             {
+
                 var result = await _countryService.DeleteCountryAsync(countryId);
                 return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
             }
@@ -88,6 +93,7 @@ namespace TestCodeEFAB.Api.Controllers
                 return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
             }
         }
+
 
         [HttpGet("country-list")]
         public async Task<ApiResponseDto> GetCountryOptionsListAsync()

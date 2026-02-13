@@ -15,13 +15,8 @@ import {
 export class CountryService {
   private readonly http = inject(HttpClient);
   private readonly url = '/country';
-  getCountryList(
-    request: CountrySearchRequest
-  ): Observable<ApiResponse<PaginatedResponse<CountryListModel>>> {
-    return this.http.post<ApiResponse<PaginatedResponse<CountryListModel>>>(
-      `${this.url}/list`,
-      request
-    );
+  getCountryList(request: CountrySearchRequest): Observable<ApiResponse<PaginatedResponse<CountryListModel>>> {
+    return this.http.post<ApiResponse<PaginatedResponse<CountryListModel>>>(`${this.url}/list`, request);
   }
 
   deleteCountry(countryId: number): Observable<ApiResponse<boolean>> {
