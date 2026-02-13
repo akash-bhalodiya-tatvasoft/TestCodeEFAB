@@ -10,6 +10,7 @@ namespace TestCodeEF.Domain.Mapper
             CreateMap<Country, CountryViewModel>().ReverseMap();
             CreateMap<Country, CountryAddViewModel>().ReverseMap();
             CreateMap<State, StateViewModel>().ReverseMap();
+            CreateMap<State, StateAddViewModel>().ReverseMap();
         }
     }
 }

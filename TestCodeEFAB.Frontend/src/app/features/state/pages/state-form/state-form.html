@@ -1,0 +1,32 @@
+<div class="page-title-block">
+    <h2> {{ mode() === 'view' ? 'View' : stateId() ? 'Edit' : 'Create' }} State </h2>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+      <div class="form-grid-layout">
+              <div>
+        <mat-form-field appearance="outline" class="custom-form-field">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" placeholder="Name">
+          @if (form.get('name')?.touched) {
+            <mat-error>{{ getErrorMessage('name') }}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <app-country-dropdown [control]="$any(form.get('countryId'))" label="Country Id" placeholder="Country Id"></app-country-dropdown>
+      </div>
+  
+      </div>
+  
+      <div class="card-footer mt-4 d-flex gap-2">
+        <button class="btn secondary-btn" mat-button type="button" (click)="onCancel()">
+            {{ mode() === 'view' ? 'Back' : 'Cancel' }}
+        </button>
+      @if(mode() !== 'view'){
+      <button class="btn primary-btn" mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loading()">
+            {{ loading() ? 'Saving...' : 'Save' }}
+        </button>
+      }
+  </div>
+  </form>

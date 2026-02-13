@@ -53,5 +53,70 @@ namespace TestCodeEFAB.Application.Interface
             }
         }
 
+        public async Task<int> AddEditStateAsync(StateAddViewModel stateAddViewModel)
+        {
+            try
+            {
+                var state = await _context.States.FindAsync(stateAddViewModel.StateId);
+                if (state == null)
+                {
+                    state = _mapper.Map<State>(stateAddViewModel);
+                    _context.States.Add(state);
+                    await _context.SaveChangesAsync();
+
+                    stateAddViewModel.StateId = state.StateId;
+                }
+                else
+                {
+                    _mapper.Map(stateAddViewModel, state);
+                    _context.States.Update(state);
+                    await _context.SaveChangesAsync();
+                }
+
+                return stateAddViewModel.StateId;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<StateAddViewModel?> GetStateDetailsAsync(int stateId)
+        {
+            try
+            {
+                var entity = await _context.States.FirstOrDefaultAsync(x => x.StateId == stateId);
+
+                if (entity == null)
+                    return null;
+
+                return _mapper.Map<StateAddViewModel>(entity);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<int?> DeleteStateAsync(int stateId)
+        {
+            try
+            {
+                var entity = await _context.States.FindAsync(stateId);
+
+                if (entity == null)
+                    return null;
+
+                _context.States.Remove(entity);
+                await _context.SaveChangesAsync();
+                return entity.StateId;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

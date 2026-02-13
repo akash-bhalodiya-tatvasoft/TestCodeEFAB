@@ -37,6 +37,64 @@ namespace TestCodeEFAB.Api.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<ApiResponseDto> CreateState(StateAddViewModel stateAddViewModel)
+        {
+            try
+            {
 
+                var result = await _stateService.AddEditStateAsync(stateAddViewModel);
+                return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
+            }
+            catch (Exception ex)
+            {
+                return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ApiResponseDto> UpdateState(StateAddViewModel stateAddViewModel)
+        {
+            try
+            {
+
+                var result = await _stateService.AddEditStateAsync(stateAddViewModel);
+                return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
+            }
+            catch (Exception ex)
+            {
+                return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
+            }
+        }
+
+        [HttpGet("{stateId}")]
+        public async Task<ApiResponseDto> GetStateDetails(int stateId)
+        {
+            try
+            {
+
+                var result = await _stateService.GetStateDetailsAsync(stateId);
+                return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
+            }
+            catch (Exception ex)
+            {
+                return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
+            }
+        }
+
+        [HttpDelete("{stateId}")]
+        public async Task<ApiResponseDto> DeleteState(int stateId)
+        {
+            try
+            {
+
+                var result = await _stateService.DeleteStateAsync(stateId);
+                return CommonHelper.getResponse(ApiResultStatusCode.Success, Messages.Success, result);
+            }
+            catch (Exception ex)
+            {
+                return CommonHelper.getResponse(ApiResultStatusCode.Error, ex.Message, null);
+            }
+        }
     }
 }
