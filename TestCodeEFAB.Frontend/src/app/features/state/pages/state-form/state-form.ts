@@ -124,7 +124,6 @@ export class StateForm implements OnInit {
       : baseModel;
 
 
-const id = this.stateId();
     const request$ = id 
       ? this.service.updateState(model) 
       : this.service.addState(model);
